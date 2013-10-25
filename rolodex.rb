@@ -11,4 +11,26 @@ class Rolodex     #Container for all contacts, better than array as allows metho
     @contacts << contact
     @id += 1      #Add an ID number to the contact
   end
+
+  def modify_contact
+  end
+
+  def self.display_all_contacts #ADD SELF! Is this correct?
+      contacts.each { |x| puts "#{x.id} #{x.first_name} #{x.last_name} #{x.email} #{x.note}"}
+  end
+
+  def display_particular_contact
+  end
+
+  def display_info_by_attribute
+  end
+
+  def self.delete_contact
+      puts "Here is a list of who you know. Hope they are important"
+      display_all_contacts
+      puts "Who do you want to delete? Gimme an ID"
+      deleteuser = gets.to_i
+      @contacts.delete_if {|c| c.id == deleteuser }
+  end
+
 end

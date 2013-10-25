@@ -1,7 +1,9 @@
-require_relative "contact"
+require_relative "contact"  #Files always lower case with underscores
 require_relative "rolodex"
 
-class CRM
+#Raise, Begin, Rescue
+
+class CRM    #Use camel case for class names
 
 attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works with string
 
@@ -38,6 +40,17 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
       add_new_contact
     when 2
       modify_existing_contact
+    when 3
+      delete_contact
+    when 4
+      display_all_contacts
+    when 5
+      display_attribute
+    when 6
+        puts "Thanks for being here with us"
+        Kernel.exit 
+    else
+      #raise an error to get it to bubble up to main_menu and then set up rescue block
     end
   end
 
@@ -64,10 +77,19 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
     Rolodex.add_contact(contact)  #Calling on the class to do something, like NEW
   end
 
+  def delete_contact
+    Rolodex.delete_contact
+  end
+
+  def display_all_contacts
+    Rolodex.display_all_contacts
+  end
+
   def main_menu
     print_main_menu
     user_selected = gets.to_i
     call_option(user_selected)
+    main_menu
   end
 end
   
