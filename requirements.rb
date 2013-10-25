@@ -17,9 +17,18 @@ As a user, if 'yes' is typed, I am prompted to change 'id', 'firstname', 'lastna
 As a user, when an attribute is entered, I am prompted to enter a new value for the attribute.
 As a user, if 'no' is typed, I am returned back to the main menu.
 As a user, if 'display all' is typed, I am shown all of the contacts that exist.
+
+DONE
+
 As a user, if 'display contact' is typed, I am shown a particular contact.
 As a user, if 'display attribute' is typed, I am prompted to enter an attribute so that I can see all of the contacts according to that attribute.
+
+???
+
 As a user, if 'delete' is typed, I am prompted to enter an attribute value of the contact to be deleted.
+
+DONE
+
 As a user, if 'exit' is typed, I am exited out of the program and returned to the command line.
 
 

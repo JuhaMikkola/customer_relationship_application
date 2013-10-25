@@ -45,10 +45,42 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
     when 4
       display_all_contacts
     when 5
-      display_attribute
+      print_attribute_menu
     when 6
         puts "Thanks for being here with us"
         Kernel.exit 
+    else
+      #raise an error to get it to bubble up to main_menu and then set up rescue block
+    end
+  end
+
+  def print_attribute_menu
+      puts "Which attribute tickles your fancy?"
+      puts "[1] ID"
+      puts "[2] First Name"
+      puts "[3] Last Name"
+      puts "[4] Email"
+      puts "[5] Note" 
+      puts "[6] Cancel"
+      puts "Enter a number: "
+      user_selected = gets.to_i
+      print_attribute_submenu(user_selected)
+  end
+
+  def print_attribute_submenu(user_selected)
+    case(user_selected)
+    when 1
+      puts Rolodex.display_info_by_attribute("id") 
+    when 2
+      puts Rolodex.display_info_by_attribute("first_name")
+    when 3
+      puts Rolodex.display_info_by_attribute("last_name")
+    when 4
+      puts Rolodex.display_info_by_attribute("email")
+    when 5
+      puts Rolodex.display_info_by_attribute("note")
+    when 6
+      main_menu
     else
       #raise an error to get it to bubble up to main_menu and then set up rescue block
     end
@@ -85,7 +117,11 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
     Rolodex.display_all_contacts
   end
 
-  def main_menu
+  def display_attribute
+    Rolodex.display_info_by_attribute
+  end
+
+  def main_menu #Loop infinate unless you have an exit condition
     print_main_menu
     user_selected = gets.to_i
     call_option(user_selected)

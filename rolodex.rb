@@ -22,7 +22,19 @@ class Rolodex     #Container for all contacts, better than array as allows metho
   def display_particular_contact
   end
 
-  def display_info_by_attribute
+  def self.display_info_by_attribute(user_selected)
+    contacts.map do |x|
+      if user_selected == "id"
+        x.id
+      elsif user_selected == "first_name"
+        x.first_name
+      elsif user_selected == "last_name"
+        x.last_name
+      elsif user_selected == "email"
+        x.email
+      elsif user_selected == "note"
+      end
+    end
   end
 
   def self.delete_contact
@@ -30,7 +42,7 @@ class Rolodex     #Container for all contacts, better than array as allows metho
       display_all_contacts
       puts "Who do you want to delete? Gimme an ID"
       deleteuser = gets.to_i
-      @contacts.delete_if {|c| c.id == deleteuser }
+      @contacts.delete_if {|c| c.id == deleteuser } #Could you do it another way? Avoid looping
   end
 
 end
