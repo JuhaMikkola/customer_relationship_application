@@ -17,6 +17,13 @@ def main_menu
     end while user_selected != 7 
 end
 
+def return_to_menu
+    puts
+    puts "Hit Enter To Return To Main Menu"
+    gets.chomp
+    puts "\e[H\e[2J"
+end
+
 def display_main_menu
     puts "------------------------------"
     puts "    Welcome to Juha's CRM!    "
@@ -141,6 +148,20 @@ def modify_contact
 end
 
 def display_a_contact
+    puts "\e[H\e[2J"
+    puts "-------------------------------"
+    puts "Search For a Contact To Display"
+    puts "-------------------------------"
+    print "Search for a name: "
+    contact_to_display = gets.chomp
+    puts "\e[H\e[2J"
+    puts "--------------"
+    puts "Search Results"
+    puts "--------------"
+    puts
+    Rolodex.display_contact(contact_to_display)
+    puts
+    return_to_menu
 end
 
 def display_all_contacts
@@ -151,6 +172,17 @@ def display_attributes
 end
 
 def delete_contact
+    display_all_contacts
+    puts
+    puts "------------------------------------"
+    puts "Which contact do you want to delete?"
+    puts "------------------------------------"
+    print "Enter ID: "
+    contact_to_delete = gets.to_i
+    Rolodex.delete_contact(contact_to_delete)
+    puts "\e[H\e[2J"
+    puts "    * Contact Deleted! *"
+    main_menu
 end
 
 end

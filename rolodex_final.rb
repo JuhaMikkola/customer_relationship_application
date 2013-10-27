@@ -36,4 +36,13 @@ class Rolodex
       contact.each { |x| x.note = new_note if x.id == id_to_edit}
   end
 
+  def self.display_contact(contact_to_display)
+      contacts.each { |x| puts "ID: #{x.id}  #{x.first_name} #{x.last_name}  Email: #{x.email}  Notes: #{x.note}" if contact_to_display.downcase == x.first_name.downcase || contact_to_display.downcase == x.last_name.downcase  }
+      puts
+  end
+
+  def self.delete_contact(contact_to_delete)
+      contacts.delete_if { |x| x.id == contact_to_delete}
+  end
+
 end
