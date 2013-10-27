@@ -12,10 +12,27 @@ class Rolodex     #Container for all contacts, better than array as allows metho
     @id += 1      #Add an ID number to the contact
   end
 
-  def modify_contact
+  def self.display_name(id_to_edit)
+    contacts.each { |i| puts "Edit #{i.first_name} #{i.last_name}?" if id_to_edit == i.id }
   end
 
-  def self.display_all_contacts #ADD SELF! Is this correct?
+  def self.change_first_name(id_to_edit, new_first_name)
+    contacts.each { |i| i.first_name = new_first_name if id_to_edit == i.id }
+  end
+
+  def self.change_last_name(id_to_edit, new_last_name)
+    contacts.each { |i| i.last_name = new_last_name if id_to_edit == i.id }
+  end
+
+  def self.change_email(id_to_edit, new_email)
+    contacts.each { |i| i.email = new_email if id_to_edit == i.id }
+  end
+
+  def self.change_note(id_to_edit, new_note)
+    contacts.each { |i| i.note = new_note if id_to_edit == i.id }
+  end
+
+  def self.display_all_contacts
       contacts.each { |x| puts "#{x.id} #{x.first_name} #{x.last_name} #{x.email} #{x.note}"}
   end
 

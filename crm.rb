@@ -39,7 +39,7 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
     when 1
       add_new_contact
     when 2
-      modify_existing_contact
+      modify_contact
     when 3
       delete_contact
     when 4
@@ -86,15 +86,72 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
     end
   end
 
-  # Perfect for a Case statement, define the above methods and add the rest.
-  # case grade
-  # when A, B
-  #   puts XXXX
-  # when A, B
-  #   puts XXXX
-  # else 
-  #   puts XXXX
-  # end
+  def modify_contact
+    puts "\e[H\e[2J"
+    display_all_contacts
+    puts
+    print "Enter ID of Contact to Edit: "
+    id_to_edit = gets.to_i
+    puts
+    Rolodex.display_name(id_to_edit)
+    puts
+    puts "[1] Yes"
+    puts "[2] No"
+    puts 
+    print "Make a choice: "
+    confirm = gets.to_i
+    case confirm
+    when 1
+      puts "\e[H\e[2J"  
+      puts "---------------------------------"
+      puts "Which field do you want to edit?"
+      puts "---------------------------------"
+      puts "[1] First Name"
+      puts "[2] Last Name"
+      puts "[3] Email"
+      puts "[4] Note"
+      puts "---------------------------------"
+      print "Make a choice: "
+      field_to_edit = gets.to_i
+    when 2
+      puts "\e[H\e[2J"
+      main_menu
+    end
+    case field_to_edit
+    when 1
+      puts
+      print "Enter new First Name: "
+      new_first_name = gets.chomp
+      Rolodex.change_first_name(id_to_edit, new_first_name)
+      puts "\e[H\e[2J"
+      puts "* First Name Changed! *"
+      main_menu
+    when 2
+      puts
+      print "Enter new Last Name: "
+      new_last_name = gets.chomp
+      Rolodex.change_last_name(id_to_edit, new_last_name)
+      puts "\e[H\e[2J"
+      puts "* Last Name Changed! *"
+      main_menu
+    when 3
+      puts
+      print "Enter new Email: "
+      new_email = gets.chomp
+      Rolodex.change_email(id_to_edit, new_email)
+      puts "\e[H\e[2J"
+      puts "* Email Changed! *"
+      main_menu
+    when 4
+      puts
+      print "Enter new Note: "
+      new_note = gets.chomp
+      Rolodex.change_note(id_to_edit, new_note)
+      puts "\e[H\e[2J"
+      puts "* Note Changed! *"
+      main_menu
+    end
+  end
 
   def add_new_contact
     print "Enter First Name: "
