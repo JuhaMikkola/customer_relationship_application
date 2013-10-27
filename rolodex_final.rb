@@ -45,4 +45,20 @@ class Rolodex
       contacts.delete_if { |x| x.id == contact_to_delete}
   end
 
+  def self.display_attribute(attribute_display)
+    case attribute_display
+    when 1
+      contacts.each { |x| puts x.id }
+    when 2
+      contacts.each { |x| puts x.first_name }
+    when 3
+      contacts.each { |x| puts x.last_name }
+    when 4
+      contacts.each { |x| puts x.email }
+    when 5
+      contacts.each { |x| puts x.note }
+    end
+    puts
+  end
+
 end

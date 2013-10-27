@@ -50,7 +50,7 @@ def call_option(user_selected)
     when 4
       display_all_contacts
     when 5
-      print_attribute_menu
+      display_attribute
     when 6
       delete_contact
     when 7
@@ -168,7 +168,22 @@ def display_all_contacts
   Rolodex.display_all_contacts
 end
 
-def display_attributes
+def display_attribute
+  puts "\e[H\e[2J"
+  puts "-------------------------"
+  puts "Choose field to display: "
+  puts "-------------------------"
+  puts "[1] ID"
+  puts "[2] First Name"
+  puts "[3] Last Name"
+  puts "[4] Email"
+  puts "[5] Note"
+  puts
+  print "Enter your selection: "
+  attribute_display = gets.to_i
+  puts
+  Rolodex.display_attribute(attribute_display)
+  return_to_menu
 end
 
 def delete_contact
