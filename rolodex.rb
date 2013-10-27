@@ -36,7 +36,9 @@ class Rolodex     #Container for all contacts, better than array as allows metho
       contacts.each { |x| puts "#{x.id} #{x.first_name} #{x.last_name} #{x.email} #{x.note}"}
   end
 
-  def display_particular_contact
+  def self.display_contact(contact_to_display)
+    contacts.each { |i| puts "ID: #{i.id}  #{i.first_name} #{i.last_name}  Email: #{i.email}  Notes: #{i.note}" if contact_to_display.downcase == i.first_name.downcase || contact_to_display.downcase == i.last_name.downcase  }
+    puts
   end
 
   def self.display_info_by_attribute(user_selected)

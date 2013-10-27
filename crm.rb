@@ -24,14 +24,18 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
   # end
 
   def print_main_menu
-    puts "Welcome to #{@name}: the future of contact management"
+    puts "------------------------------"
+    puts "      Welcome to #{@name}     "
+    puts "------------------------------"
     puts "[1] Add a new contact"
     puts "[2] Modify an existing contact"
-    puts "[3] Delete a contact"
+    puts "[3] Search for a contact"
     puts "[4] Display all the contacts"
-    puts "[5] Display an attribute" 
-    puts "[6] Exit"
-    puts "Enter a number: "
+    puts "[5] Display an attribute"
+    puts "[6] Delete a contact"
+    puts "[7] Exit"
+    puts "------------------------------"
+    print "Enter a number: "
   end
 
   def call_option(user_selected)
@@ -41,12 +45,14 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
     when 2
       modify_contact
     when 3
-      delete_contact
+      display_a_contact
     when 4
       display_all_contacts
     when 5
       print_attribute_menu
     when 6
+      delete_contact
+    when 7
         puts "Thanks for being here with us"
         Kernel.exit 
     else
@@ -174,8 +180,32 @@ attr_accessor :name  #GETTER & SETTER methods, convention is symbol but works wi
     Rolodex.display_all_contacts
   end
 
+  def display_a_contact
+    puts "\e[H\e[2J"
+    puts "-------------------------------"
+    puts "Search For a Contact To Display"
+    puts "-------------------------------"
+    print "Search for a name: "
+    contact_to_display = gets.chomp
+    puts "\e[H\e[2J"
+    puts "--------------"
+    puts "Search Results"
+    puts "--------------"
+    puts
+    Rolodex.display_contact(contact_to_display)
+    puts
+    return_to_menu
+  end
+
   def display_attribute
     Rolodex.display_info_by_attribute
+  end
+
+  def return_to_menu
+    puts
+    puts "Hit Enter To Return To Main Menu"
+    gets.chomp
+    puts "\e[H\e[2J"
   end
 
   def main_menu #Loop infinate unless you have an exit condition

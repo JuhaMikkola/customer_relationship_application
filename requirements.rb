@@ -12,7 +12,7 @@ OK.
 As a user, when an attribute is entered, I am prompted to type
 'yes' or 'no' to confirm my selection.
 
-
+OK
 
 As a user, if 'yes' is typed, I am prompted to change
 'id', 'firstname', 'lastname' and 'email'.
